@@ -1,4 +1,4 @@
-import { Grid3X3, History, Calendar, Users, BarChart3, MessageCircle, HelpCircle, Settings } from 'lucide-react';
+import { Grid3X3, History, Calendar, Users, BarChart3, MessageCircle, HelpCircle, Settings, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const iconMap = {
@@ -35,13 +35,19 @@ const NavigationSection = ({ title, items }) => {
     );
 };
 
-export const Sidebar = ({ navigationData }) => {
+export const Sidebar = ({ navigationData, onClose }) => {
     const location = useLocation();
-    
+
     return (
         <div className="w-64 bg-customWhite shadow-sm rounded-l-[20px] flex flex-col h-screen min-h-screen">
+            {/* Close button (only on mobile) */}
+            <div className="flex justify-end p-4 lg:hidden">
+                <button onClick={onClose}>
+                    <X className="w-6 h-6 text-gray-700" />
+                </button>
+            </div>
             <div className="flex flex-col h-full justify-between">
-                {/* Main content area */}
+
                 <div className="p-8 flex-1">
                     <div className="flex items-center space-x-0 mb-8">
                         <span className="text-2xl font-bold text-cyan-400">Health</span>
@@ -63,12 +69,11 @@ export const Sidebar = ({ navigationData }) => {
                     </nav>
                 </div>
 
-                {/* Settings section at bottom */}
                 <div className="p-8 pt-0">
                     {navigationData.settings.map((item) => {
                         const IconComponent = iconMap[item.icon];
                         const isActive = location.pathname.includes(item.id);
-                        
+
                         return (
                             <Link
                                 key={item.id}

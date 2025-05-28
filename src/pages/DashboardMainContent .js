@@ -1,19 +1,19 @@
-import { activityData, calendarData, currentAppointments, healthMetrics, navigationItems, upcomingSchedule } from '../data/appointments';
+import { activityData, calendarData, currentAppointments, healthMetrics, upcomingSchedule } from '../data/appointments';
 import { ProfileHeader, SearchHeader } from '../components/Headers';
-import { AnatomySection, HealthMetrics } from '../components/AnatomySection ';
-import { ActivityChart, ActivityFeed } from '../components/ActivityFeed ';
-import { Calendar, CalendarView } from '../components/CalendarView ';
+import { AnatomySection } from '../components/AnatomySection ';
+import {  ActivityFeed } from '../components/ActivityFeed ';
+import {  CalendarView } from '../components/CalendarView ';
 import { CurrentAppointments, UpcomingSchedule } from '../components/SimpleAppointmentCard ';
-import { Sidebar } from '../components/Sidebar';
+
 
 export default function Dashboard () {
   const handleDetailsClick = () => {
-    // Add your details navigation logic here
+
     console.log("Navigate to details page");
   };
 
   const handleBodySearch = () => {
-    // Add your body search logic here
+
     console.log("Body search triggered");
   };
   const handlePrevMonth = () => {
@@ -40,7 +40,7 @@ export default function Dashboard () {
 
   const handleDateClick = (date, dayIndex) => {
     console.log(`Clicked on date ${date}, day index ${dayIndex}`);
-    // You can add logic here to update the selected day
+
   };
 
    return (
