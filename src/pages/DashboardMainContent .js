@@ -42,61 +42,53 @@ export default function Dashboard () {
     console.log(`Clicked on date ${date}, day index ${dayIndex}`);
     // You can add logic here to update the selected day
   };
-  return (
-    <div className='bg-customBlue p-4 min-h-screen'>
-      <div className="min-h-screen  rounded-[20px] bg-white flex">
 
-        
+   return (
+    <div className="flex-1 p-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="space-y-2 pt-6 pl-6">
+          {/* Search Header */}
+          <SearchHeader onSearch={() => {}} />
 
-        {/* Main Content */}
-        <div className="flex-1 p-2">
+          {/* Dashboard Title */}
+          <h1 className="text-3xl font-bold text-deepIndigo mb-4 text-left">Dashboard</h1>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">
+          {/* Human Body Section */}
+          <AnatomySection
+            humanBodyImage="/assets/human.png"
+            metrics={healthMetrics}
+            onDetailsClick={handleDetailsClick}
+            onBodySearch={handleBodySearch}
+          />
 
-            <div className="space-y-2 pt-6 pl-6">
-              {/* Search header */}
-
-              <SearchHeader onSearch={""} />
-              <div>
-                <h1 className="text-3xl font-bold text-deepIndigo mb-4 text-left">Dashboard</h1>
-              </div>
-              {/* Human Body */}
-              <AnatomySection
-                humanBodyImage="/assets/human.png"
-                metrics={healthMetrics}
-                onDetailsClick={handleDetailsClick}
-                onBodySearch={handleBodySearch}
-              />
-
-              {/*  Activity Chart */}
-              <ActivityFeed activityData={activityData} />
-            </div>
-
-
-            <div className="space-y-2 bg-customWhite rounded-r-[20px] p-4">
-              {/* Profile Header */}
-              <ProfileHeader />
-
-              {/* Calendar */}
-              <CalendarView
-                calendarData={calendarData}
-                onPrevMonth={handlePrevMonth}
-                onNextMonth={handleNextMonth}
-                onDateClick={handleDateClick}
-              />
-
-              {/* Current Appointments */}
-              <CurrentAppointments appointments={currentAppointments} onAppointmentClick={onAppointmentClick} />
-
-              {/* Upcoming Schedule */}
-              <UpcomingSchedule 
-                schedule={upcomingSchedule}
-                onAppointmentClick={handleAppointmentClick}
-              />
-            </div>
-          </div>
+          {/* Activity Feed */}
+          <ActivityFeed activityData={activityData} />
         </div>
 
+        <div className="space-y-2 bg-customWhite rounded-r-[20px] p-4">
+          {/* Profile Header */}
+          <ProfileHeader />
+
+          {/* Calendar View */}
+          <CalendarView
+            calendarData={calendarData}
+            onPrevMonth={handlePrevMonth}
+            onNextMonth={handleNextMonth}
+            onDateClick={handleDateClick}
+          />
+
+          {/* Current Appointments */}
+          <CurrentAppointments
+            appointments={currentAppointments}
+            onAppointmentClick={onAppointmentClick}
+          />
+
+          {/* Upcoming Schedule */}
+          <UpcomingSchedule
+            schedule={upcomingSchedule}
+            onAppointmentClick={handleAppointmentClick}
+          />
+        </div>
       </div>
     </div>
   );

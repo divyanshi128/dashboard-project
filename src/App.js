@@ -23,7 +23,7 @@ function App() {
       <div className='bg-customBlue p-4 min-h-screen'>
         <div className="min-h-screen  rounded-[20px] bg-white flex">
           <Sidebar navigationData={navigationItems} />
-          <div className="flex-1 p-8">
+          <div className="flex-1">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
